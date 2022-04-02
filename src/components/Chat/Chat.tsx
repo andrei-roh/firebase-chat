@@ -1,5 +1,12 @@
 import { useContext, useState } from 'react';
-import { Avatar, Button, Container, Grid, TextField } from '@material-ui/core';
+import {
+  Avatar,
+  Container,
+  Grid,
+  IconButton,
+  TextField,
+} from '@material-ui/core';
+import MailIcon from '@material-ui/icons/Mail';
 
 import firebase from 'firebase/compat/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -39,26 +46,27 @@ const Chat: any = () => {
       >
         <div
           style={{
-            width: '80%',
+            width: '90%',
             height: '60vh',
-            border: 'solid 1px gray',
             overflowY: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           {messages?.map((message) => (
             <div
               key={`${message.displayName}-${message.createdAt}`}
               style={{
-                margin: 15,
-                marginLeft: user?.uid === message.uid ? 'auto' : 10,
+                margin: 10,
+                marginLeft: user?.uid === message.uid ? 'auto' : 0,
                 padding: 5,
               }}
             >
-              <Grid container>
+              <Grid container direction="column">
                 <Avatar src={message.photoURL} />
-                <div>{message.displayName}</div>
+                <div style={{ fontSize: '0.6em' }}>{message.displayName}</div>
               </Grid>
-              <div>{message.text}</div>
+              <div style={{ fontSize: '0.8em' }}>{message.text}</div>
             </div>
           ))}
         </div>
@@ -66,15 +74,18 @@ const Chat: any = () => {
           container
           direction={'column'}
           alignItems={'flex-end'}
-          style={{ width: '80%' }}
+          style={{ width: '90%' }}
         >
           <TextField
             fullWidth
+            color="secondary"
             maxRows={2}
             value={text}
-            onChange={(e: any) => setText(e.target.value)}
+            onChange={(element: any) => setText(element.target.value)}
           />
-          <Button onClick={sendMessage}>Send</Button>
+          <IconButton color="secondary" onClick={sendMessage}>
+            <MailIcon />
+          </IconButton>
         </Grid>
       </Grid>
     </Container>

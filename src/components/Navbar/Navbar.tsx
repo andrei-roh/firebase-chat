@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import { AppBar, Button, Grid, Toolbar } from '@material-ui/core';
+import { AppBar, Avatar, Button, Grid, Toolbar } from '@material-ui/core';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { Context } from 'index';
-import { LOGIN_ROUTE } from 'components/utils/types';
+import { getLogin } from 'components/utils/getLogin';
 import { INavbar } from 'types';
 
 const Navbar: React.FC<INavbar> = () => {
@@ -20,11 +19,12 @@ const Navbar: React.FC<INavbar> = () => {
       <Toolbar>
         <Grid container justifyContent={'flex-end'}>
           {user ? (
-            <Button onClick={getExit}>Exit</Button>
+            <>
+              <Avatar src={user?.photoURL!} />
+              <Button onClick={getExit}>Exit</Button>
+            </>
           ) : (
-            <NavLink to={LOGIN_ROUTE}>
-              <Button>Login</Button>
-            </NavLink>
+            <Button onClick={() => getLogin(authentication)}>Login</Button>
           )}
         </Grid>
       </Toolbar>

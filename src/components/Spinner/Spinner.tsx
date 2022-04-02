@@ -1,13 +1,15 @@
-import Loader from 'react-loader-spinner';
-import 'index.css';
+import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Spinner = () => {
   return (
-    <div className="spinner">
-      <div className="spinner_wheel">
-        <Loader type="Oval" color="#f50057" height={250} width={250} />
-      </div>
-    </div>
+    <Box
+      sx={{ display: 'flex', height: '100vh' }}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <CircularProgress color="secondary" />
+    </Box>
   );
 };
 
