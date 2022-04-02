@@ -15,10 +15,12 @@ const Login: any = () => {
         style={{ height: window.innerHeight - 64 }}
         alignItems={'center'}
         justifyContent={'center'}
+        direction="column"
       >
         <IconButton onClick={() => getLogin(authentication)}>
           <MouseIcon color="secondary" fontSize="large" />
         </IconButton>
+        START CHAT
       </Grid>
     </Container>
   );

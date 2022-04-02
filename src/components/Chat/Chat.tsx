@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import {
   Avatar,
+  Card,
   Container,
   Grid,
   IconButton,
@@ -14,6 +15,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import { Context } from 'index';
 import Spinner from 'components/Spinner/Spinner';
+import 'index.css';
 
 const Chat: any = () => {
   const { authentication, firestore } = useContext(Context);
@@ -41,45 +43,40 @@ const Chat: any = () => {
     <Container>
       <Grid
         container
-        style={{ height: window.innerHeight - 64, marginTop: 15 }}
+        style={{
+          height: window.innerHeight - 64,
+          margin: '74px auto 0',
+          maxWidth: 768,
+        }}
         justifyContent={'center'}
       >
-        <div
-          style={{
-            width: '90%',
-            height: '60vh',
-            overflowY: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
+        <div>
           {messages?.map((message) => (
-            <div
+            <Card
               key={`${message.displayName}-${message.createdAt}`}
-              style={{
-                margin: 10,
-                marginLeft: user?.uid === message.uid ? 'auto' : 0,
-                padding: 5,
-              }}
+              style={{ margin: 10, padding: 10 }}
             >
-              <Grid container direction="column">
-                <Avatar src={message.photoURL} />
-                <div style={{ fontSize: '0.6em' }}>{message.displayName}</div>
+              <Grid container direction="column" style={{ marginBottom: 10 }}>
+                <Avatar src={message.photoURL} alt={message.displayName} />
+                <div style={{ fontSize: '0.8em', color: '#f50057' }}>
+                  {message.displayName}
+                </div>
               </Grid>
-              <div style={{ fontSize: '0.8em' }}>{message.text}</div>
-            </div>
+              <div>{message.text}</div>
+            </Card>
           ))}
         </div>
         <Grid
           container
           direction={'column'}
           alignItems={'flex-end'}
-          style={{ width: '90%' }}
+          style={{ width: '100%', margin: '0 10px', paddingBottom: '15px' }}
         >
           <TextField
             fullWidth
             color="secondary"
             maxRows={2}
+            style={{ marginTop: 10 }}
             value={text}
             onChange={(element: any) => setText(element.target.value)}
           />
