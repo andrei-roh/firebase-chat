@@ -1,27 +1,23 @@
 import { useContext } from 'react';
-import { Container, Grid, IconButton } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import IconButton from '@material-ui/core/IconButton';
 import MouseIcon from '@material-ui/icons/Mouse';
 
 import { Context } from 'index';
 import { getLogin } from 'components/utils/getLogin';
+import { Authorization } from 'style';
 
 const Login: any = () => {
   const { authentication } = useContext(Context);
 
   return (
     <Container>
-      <Grid
-        container
-        style={{ height: window.innerHeight - 64 }}
-        alignItems={'center'}
-        justifyContent={'center'}
-        direction="column"
-      >
+      <Authorization container direction="column">
         <IconButton onClick={() => getLogin(authentication)}>
           <MouseIcon color="secondary" fontSize="large" />
         </IconButton>
         START CHAT
-      </Grid>
+      </Authorization>
     </Container>
   );
 };

@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AppBar, Avatar, Button, Grid, Toolbar } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 

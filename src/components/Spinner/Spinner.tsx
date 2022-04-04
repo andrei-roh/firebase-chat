@@ -1,15 +1,11 @@
-import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Central } from 'style';
 
 const Spinner = () => {
   return (
-    <Box
-      sx={{ display: 'flex', height: '100vh' }}
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Central>
       <CircularProgress color="secondary" />
-    </Box>
+    </Central>
   );
 };
 

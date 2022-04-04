@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Box from '@material-ui/core/Box';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -10,21 +9,13 @@ import Router from './Router/Router';
 
 import { IMain } from 'types';
 import Spinner from './Spinner/Spinner';
+import { Central } from 'style';
 
 const Main: React.FC<IMain> = () => {
   const { authentication } = useContext(Context);
   const [user, loading, error] = useAuthState(authentication);
 
-  if (error)
-    return (
-      <Box
-        sx={{ display: 'flex', height: '100vh' }}
-        justifyContent="center"
-        alignItems="center"
-      >
-        {error}
-      </Box>
-    );
+  if (error) return <Central>{error}</Central>;
 
   return (
     <>
